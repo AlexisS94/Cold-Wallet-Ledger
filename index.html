@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cold Wallet Ledger — Crypto Exchange & Wallet</title>
+<meta name="description" content="Buy, sell and hold crypto. Spot markets, AI API access and a secure self-custody wallet.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html"><span class="logo-mark">CW</span> Cold Wallet Ledger</a>
+    <nav class="nav-links">
+      <a href="#markets">Markets</a>
+      <a href="#features">Wallet</a>
+      <a href="#api">API</a>
+      <a href="#markets">Fees</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-ghost" href="login.html">Log in</a>
+      <a class="btn btn-primary" href="register.html">Sign up</a>
+    </div>
+  </div>
+</header>
+
+<div class="ticker"><div class="wrap ticker-in" id="ticker"></div></div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span> Live markets · 24/7 settlement</span>
+      <h1>Trade crypto.<br>Hold it in a wallet <em>you control</em>.</h1>
+      <p class="lead">Spot markets, instant conversions and a single API key for AI compute. No spread games, no hidden custody.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="register.html">Create account</a>
+        <a class="btn btn-ghost btn-lg" href="login.html">Log in</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>$4.2B</b>24h volume</div>
+        <div><b>180+</b>markets</div>
+        <div><b>0.02%</b>maker fee</div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-head">
+        <div>
+          <div class="chart-sub">BTC / USDT</div>
+          <div class="chart-price" id="hero-price">—</div>
+        </div>
+        <div class="green" style="font-weight:700;font-size:14px">+1.84%</div>
+      </div>
+      <svg class="chart-svg" id="hero-chart" viewBox="0 0 600 190" preserveAspectRatio="none"></svg>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="markets">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Markets</h2>
+        <p>Spot prices update continuously. Charts are indicative.</p>
+      </div>
+      <a class="btn btn-ghost" href="login.html">Open wallet</a>
+    </div>
+    <div class="tbl-card">
+      <table>
+        <thead><tr><th>Asset</th><th>Last price</th><th>24h</th><th>Chart</th></tr></thead>
+        <tbody id="mkt-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="features">
+  <div class="wrap">
+    <h2 style="margin-bottom:20px">Built for people who move fast</h2>
+    <div class="feat">
+      <div><div class="ic">1</div><h3>Spot wallet</h3><p>Hold BTC, ETH, stablecoins and more in a single balance sheet with instant internal transfers.</p></div>
+      <div><div class="ic">2</div><h3>AI API credits</h3><p>Fund an API key straight from your wallet balance and call vision, text and speech models.</p></div>
+      <div><div class="ic">3</div><h3>Cold storage</h3><p>97% of assets held in multi-signature cold storage, audited quarterly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="api">
+  <div class="wrap" style="display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center">
+    <div>
+      <h2 style="margin-bottom:10px">One key. Every model.</h2>
+      <p class="lead" style="margin-bottom:20px">Your USDT balance doubles as API credit. Metered per request, billed per second, no monthly minimum.</p>
+      <a class="btn btn-primary" href="login.html">Get an API key</a>
+    </div>
+    <div class="chart-card mono" style="font-size:12.5px;color:#9fb4cd;line-height:1.9">
+      <div class="muted">POST /v1/chat/completions</div>
+      <div>Authorization: Bearer <span class="green">cwl_live_••••4C9F</span></div>
+      <div class="muted">"model": "cwl-omni-4"</div>
+      <div class="muted">"max_tokens": 2048</div>
+      <div style="margin-top:10px" class="green">→ 200 OK · 412 ms</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><div class="logo" style="margin-bottom:8px"><span class="logo-mark">CW</span> Cold Wallet Ledger</div><div>Exchange &amp; self-custody wallet.</div></div>
+      <div><div class="muted" style="margin-bottom:8px;font-weight:600">Product</div><a href="#markets">Markets</a><br><a href="#api">API</a></div>
+      <div><div class="muted" style="margin-bottom:8px;font-weight:600">Account</div><a href="login.html">Log in</a><br><a href="register.html">Sign up</a></div>
+    </div>
+    <p class="foot-note">Cold Wallet Ledger is an independent exchange interface. Balances shown in the dashboard are illustrative. Crypto assets are volatile; past performance is not indicative of future results.</p>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/market.js"></script>
+</body>
+</html>
